@@ -60,7 +60,7 @@ if (-not $SqliteCommand) {
 }
 
 # 3. 데이터베이스 경로 지정
-$DatabaseFile = Join-Path $PSScriptRoot "02.실기\04.SQL\00.DatabaseFile\study.db"
+$DatabaseFile = Join-Path $PSScriptRoot "02.실기\04.SQL\000.DatabaseFile\study.db"
 
 if (-not (Test-Path -LiteralPath $DatabaseFile -PathType Leaf)) {
     Write-Host "데이터베이스 파일을 찾을 수 없습니다." -ForegroundColor Red
@@ -157,6 +157,5 @@ finally {
     if ($Process) {
         $Process.Dispose()
     }
+    Write-Host ""
 }
-
-Write-Host ""
