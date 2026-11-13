@@ -146,11 +146,11 @@ try {
         Write-Host "SQL 실행 실패 (Exit Code: $ExitCode)" -ForegroundColor Red
     }
     else {
-        Write-Host "SQL 실행 완료." -ForegroundColor Green
+        Write-Host "SQL 실행 완료" -ForegroundColor Green
     }
 }
 catch {
-    Write-Host "SQLite 실행 중 오류가 발생했습니다." -ForegroundColor Red
+    Write-Host "SQLite 실행 중 오류 발생" -ForegroundColor Red
     Write-Host $_.Exception.Message -ForegroundColor Red
 }
 finally {

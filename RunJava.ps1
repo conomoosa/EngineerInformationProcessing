@@ -1,3 +1,4 @@
+
 param(
     [string]$JavaFile,
     [string[]]$ProgramArgs = @()
@@ -96,18 +97,23 @@ if (-not (Test-Path $BuildDirectory)) {
 
 # Write-Host "컴파일 성공!" -ForegroundColor Green
 
+# 7. Java 실행
 # Write-Host "========================================" -ForegroundColor Cyan
 # Write-Host " Java 실행 시작" -ForegroundColor Cyan
 # Write-Host "========================================" -ForegroundColor Cyan
 
-# 7. Java 실행
+Write-Host "[Java 코드 실행]" -ForegroundColor Green
+Write-Host ""
+
 & java -cp $BuildDirectory $FullClassName @ProgramArgs
 
-# if ($LASTEXITCODE -ne 0) {
-#     Write-Host "Java 프로그램 실행 중 오류가 발생했습니다." -ForegroundColor Red
-# }
-# else {
-#     Write-Host "Java 프로그램 실행 완료." -ForegroundColor Green
-# }
+Write-Host ""
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Java 코드 실행 중 오류 발생" -ForegroundColor Red
+}
+else {
+    Write-Host "Java 코드 실행 완료" -ForegroundColor Green
+}
 
 Write-Host ""

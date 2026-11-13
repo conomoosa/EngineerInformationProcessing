@@ -63,6 +63,9 @@ if (-not $PythonCommand) {
 # Write-Host "파일: $PythonFile"
 # Write-Host "인터프리터: $($PythonCommand.Source)"
 
+Write-Host "[Python 코드 실행]" -ForegroundColor Green
+Write-Host ""
+
 # 5. Python 실행
 if ($PythonCommand.Name -eq "py.exe" -or $PythonCommand.Name -eq "py") {
     & $PythonCommand.Source -3 $PythonFile @ProgramArgs
@@ -71,12 +74,14 @@ else {
     & $PythonCommand.Source $PythonFile @ProgramArgs
 }
 
+Write-Host ""
+
 # 6. 실행 결과 확인
-# if ($LASTEXITCODE -ne 0) {
-#     Write-Host "Python 프로그램 실행 중 오류가 발생했습니다." -ForegroundColor Red
-# }
-# else {
-#     Write-Host "Python 프로그램 실행 완료." -ForegroundColor Green
-# }
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Python 코드 실행 중 오류 발생" -ForegroundColor Red
+}
+else {
+    Write-Host "Python 코드 실행 완료" -ForegroundColor Green
+}
 
 Write-Host ""

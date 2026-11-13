@@ -82,13 +82,18 @@ $ExeFile = Join-Path $BuildDirectory "$FileName.exe"
 # Write-Host " C 프로그램 실행 시작" -ForegroundColor Cyan
 # Write-Host "========================================" -ForegroundColor Cyan
 
+ Write-Host "[C 코드 실행]" -ForegroundColor Green
+ Write-Host ""
+
 & $ExeFile @ProgramArgs
 
-# if ($LASTEXITCODE -ne 0) {
-#     Write-Host "프로그램 실행 중 오류가 발생했습니다." -ForegroundColor Red
-# }
-# else {
-#     Write-Host "프로그램 실행 완료." -ForegroundColor Green
-# }
+Write-Host ""
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "C 코드 실행 중 오류 발생" -ForegroundColor Red
+}
+else {
+    Write-Host "C 코드 실행 완료" -ForegroundColor Green
+}
 
 Write-Host ""
